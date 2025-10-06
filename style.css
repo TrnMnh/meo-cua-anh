@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌄 Ảnh nền dọc hiển thị đầy đủ trên mọi thiết bị */
+body {
+  background: url("anh-nen.png") center center no-repeat;
+  background-size: contain;
+  background-color: #000; /* màu nền phụ cho viền hai bên */
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Lớp phủ mờ giúp chữ & tim nổi bật */
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+/* Căn giữa chữ trong khung hình */
+.love_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+/* Chữ trong trái tim */
+.love_you {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-size: clamp(0.9rem, 2.3vw, 1.3rem);
+  font-weight: bold;
+  color: #ffc0cb;
+  text-shadow: 0 0 8px #fff, 0 0 16px #ffb6c1;
+  margin: 0.2rem 0;
+  user-select: none;
+  animation: fadeIn 2s ease-in-out alternate;
+}
+
+/* Nhạc nền */
+audio {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  max-width: 80%;
+  z-index: 3;
+}
+
+/* Canvas hiệu ứng trái tim */
+#lovexf {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Hiệu ứng chữ mờ dần hiện ra */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    letter-spacing: 0.1rem;
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0.05rem;
+  }
+}
+
+/* Responsive chữ nhỏ hơn trên màn nhỏ */
+@media (max-width: 600px) {
+  .love_you {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+}
